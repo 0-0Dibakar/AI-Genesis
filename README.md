@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 AI Genesis - Premium Investor Landing Page
+# 🚀 AI Genesis
 
 **Transform Your Vision into Reality**
 
