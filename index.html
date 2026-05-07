@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StartupVenture - Revolutionizing Innovation</title>
+    <meta name="description" content="Transforming industry with cutting-edge technology. Join us in shaping the future.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066ff;
+            --primary-dark: #0052cc;
+            --secondary: #00d4ff;
+            --accent: #ff006e;
+            --dark-bg: #0a0e27;
+            --dark-surface: #1a1f3a;
+            --dark-border: #2d3561;
+            --text-primary: #ffffff;
+            --text-secondary: #b8bcc9;
+            --success: #00d084;
+            --gradient-primary: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
+            --gradient-accent: linear-gradient(135deg, #ff006e 0%, #ff6b9d 100%);
+            --gradient-dark: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--text-primary);
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 102, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--dark-border);
+            z-index: 1000;
+            padding: 16px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 12px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 180px;
+            padding-bottom: 100px;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 102, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.08) 0%, transparent 50%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 900;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 64px;
+            animation: fadeInUp 1s ease 0.4s both;
+            flex-wrap: wrap;
+        }
+
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-top: 80px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .metric {
+            padding: 24px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--dark-border);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .metric:hover {
+            background: rgba(0, 102, 255, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        .metric-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Problem Section */
+        .problem {
+            background: rgba(26, 31, 58, 0.5);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .problem-content h2 {
+            font-size: 48px;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .problem-list {
+            list-style: none;
+            margin-top: 32px;
+        }
+
+        .problem-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding: 16px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.3s ease;
+        }
+
+        .problem-item:hover {
+            background: rgba(0, 102, 255, 0.1);
+            transform: translateX(8px);
+        }
+
+        .problem-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-primary);
+            border-radius: 8px;
+            font-size: 20px;
+        }
+
+        .problem-item-content {
+            flex: 1;
+        }
+
+        .problem-item h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .problem-item p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .problem-visual {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.15) 0%, rgba(0, 212, 255, 0.08) 100%);
+            border-radius: 16px;
+            border: 1px solid var(--dark-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text-secondary);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .problem-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 40% 40%, rgba(0, 102, 255, 0.2) 0%, transparent 50%);
+        }
+
+        /* Solution Section */
+        .solution {
+            background: radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .solution-visual {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(255, 0, 110, 0.08) 100%);
+            border-radius: 16px;
+            border: 1px solid var(--dark-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text-secondary);
+            overflow: hidden;
+            position: relative;
+            order: -1;
+        }
+
+        .solution-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 60% 60%, rgba(0, 212, 255, 0.2) 0%, transparent 50%);
+        }
+
+        .solution-content h2 {
+            font-size: 48px;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .solution-points {
+            list-style: none;
+            margin-top: 32px;
+        }
+
+        .solution-point {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding: 16px;
+            border-radius: 8px;
+            background: rgba(0, 212, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .solution-point:hover {
+            background: rgba(0, 212, 255, 0.15);
+            transform: translateX(8px);
+        }
+
+        .solution-point::before {
+            content: '✓';
+            flex-shrink: 0;
+            color: var(--success);
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        /* Features Section */
+        .features {
+            background: rgba(26, 31, 58, 0.5);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            padding: 40px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--dark-border);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            background: rgba(0, 102, 255, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.2);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Market Opportunity Section */
+        .market {
+            background: radial-gradient(circle at 20% 80%, rgba(255, 0, 110, 0.1) 0%, transparent 50%);
+        }
+
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .market-item {
+            padding: 32px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, rgba(0, 212, 255, 0.05) 100%);
+            border: 1px solid var(--dark-border);
+            transition: all 0.3s ease;
+        }
+
+        .market-item:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 35px rgba(0, 102, 255, 0.1);
+        }
+
+        .market-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .market-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .market-item p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Competitive Advantage */
+        .advantage {
+            background: rgba(26, 31, 58, 0.5);
+        }
+
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .advantage-card {
+            padding: 36px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.08) 0%, rgba(0, 212, 255, 0.05) 100%);
+            border: 1px solid var(--dark-border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .advantage-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .advantage-card:hover::before {
+            left: 100%;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--secondary);
+        }
+
+        .advantage-num {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .advantage-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .advantage-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Product Section */
+        .product {
+            background: radial-gradient(circle at 70% 40%, rgba(0, 102, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .product-showcase {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.2) 0%, rgba(0, 212, 255, 0.15) 100%);
+            border-radius: 12px;
+            border: 1px solid var(--dark-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            color: var(--text-secondary);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-image:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 102, 255, 0.2);
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 40% 40%, rgba(0, 212, 255, 0.3) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        /* Team Section */
+        .team {
+            background: rgba(26, 31, 58, 0.5);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 32px 24px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--dark-border);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            background: rgba(0, 102, 255, 0.08);
+            border-color: var(--primary);
+            transform: translateY(-8px);
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: var(--text-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-avatar::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            z-index: -1;
+        }
+
+        .team-member h3 {
+            font-size: 18px;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .team-role {
+            font-size: 13px;
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+
+        .team-bio {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .investor-cta {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.15) 0%, rgba(0, 212, 255, 0.1) 100%);
+            border-top: 1px solid var(--dark-border);
+            border-bottom: 1px solid var(--dark-border);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .investor-cta h2 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .investor-cta p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 14, 39, 0.95);
+            border-top: 1px solid var(--dark-border);
+            padding: 60px 0 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-section h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-contact {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .footer-contact a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--dark-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--dark-border);
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .hero {
+                padding-top: 120px;
+                padding-bottom: 60px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .hero-metrics {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .problem-grid,
+            .solution-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .solution-visual {
+                order: 0;
+            }
+
+            .problem-visual,
+            .solution-visual {
+                height: 300px;
+            }
+
+            .market-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid,
+            .advantage-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .nav-cta {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .investor-cta h2 {
+                font-size: 36px;
+            }
+
+            .cta-buttons {
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding-top: 100px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .section-subtitle {
+                font-size: 16px;
+            }
+
+            .problem-content h2,
+            .solution-content h2 {
+                font-size: 32px;
+            }
+
+            .feature-card,
+            .market-item,
+            .advantage-card {
+                padding: 24px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">VentureX</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#team">Team</a></li>
+            </ul>
+            <div class="nav-cta">
+                <button class="btn btn-secondary">Book Demo</button>
+                <button class="btn btn-primary">Pitch Deck</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="section hero" id="home">
+        <div class="container hero-content">
+            <h1>Revolutionizing the Future of Technology</h1>
+            <p class="hero-subtitle">Empowering businesses through innovative solutions. Join us in transforming industries and creating lasting impact.</p>
+            <div class="hero-cta">
+                <button class="btn btn-primary btn-icon">
+                    <span>Get Started</span>
+                    <span>→</span>
+                </button>
+                <button class="btn btn-secondary btn-icon">
+                    <span>Schedule Call</span>
+                </button>
+            </div>
+            <div class="hero-metrics">
+                <div class="metric">
+                    <div class="metric-value">10K+</div>
+                    <div class="metric-label">Active Users</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">$50M+</div>
+                    <div class="metric-label">Total Value Delivered</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">99.9%</div>
+                    <div class="metric-label">Platform Uptime</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">30+</div>
+                    <div class="metric-label">Countries Served</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Statement -->
+    <section class="section problem" id="problem">
+        <div class="container">
+            <h2 class="section-title">The Problem We Solve</h2>
+            <p class="section-subtitle">Current solutions lack efficiency, scalability, and user-centric design. Businesses waste 40% of resources on outdated systems.</p>
+            
+            <div class="problem-grid">
+                <div class="problem-content">
+                    <h3>Why The Current Approach Fails</h3>
+                    <ul class="problem-list">
+                        <li class="problem-item">
+                            <div class="problem-icon">⚠️</div>
+                            <div class="problem-item-content">
+                                <h4>Inefficient Workflows</h4>
+                                <p>Manual processes leading to bottlenecks and delays</p>
+                            </div>
+                        </li>
+                        <li class="problem-item">
+                            <div class="problem-icon">📊</div>
+                            <div class="problem-item-content">
+                                <h4>Limited Scalability</h4>
+                                <p>Systems break down as your business grows</p>
+                            </div>
+                        </li>
+                        <li class="problem-item">
+                            <div class="problem-icon">💰</div>
+                            <div class="problem-item-content">
+                                <h4>High Operating Costs</h4>
+                                <p>Hidden expenses eroding profit margins</p>
+                            </div>
+                        </li>
+                        <li class="problem-item">
+                            <div class="problem-icon">🔒</div>
+                            <div class="problem-item-content">
+                                <h4>Security Vulnerabilities</h4>
+                                <p>Inadequate protection for sensitive data</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="problem-visual">
+                    [Industry Problem Visualization]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section solution">
+        <div class="container">
+            <h2 class="section-title">Our Solution</h2>
+            <p class="section-subtitle">A comprehensive platform designed to transform how businesses operate, with cutting-edge technology and seamless integration.</p>
+            
+            <div class="solution-grid">
+                <div class="solution-visual">
+                    [Solution Architecture Diagram]
+                </div>
+                <div class="solution-content">
+                    <h3>Platform Highlights</h3>
+                    <ul class="solution-points">
+                        <li class="solution-point">AI-powered automation reducing manual work by 80%</li>
+                        <li class="solution-point">Cloud-native architecture for unlimited scalability</li>
+                        <li class="solution-point">Enterprise-grade security with zero-trust design</li>
+                        <li class="solution-point">Real-time analytics and actionable insights</li>
+                        <li class="solution-point">API-first ecosystem enabling seamless integrations</li>
+                        <li class="solution-point">24/7 dedicated support and monitoring</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features" id="features">
+        <div class="container">
+            <h2 class="section-title">Key Features & Capabilities</h2>
+            <p class="section-subtitle">Industry-leading features that give your business a competitive advantage</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Sub-100ms response times with globally distributed infrastructure for optimal performance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Easy Integration</h3>
+                    <p>RESTful APIs and webhooks for seamless integration with your existing tech stack.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Advanced Analytics</h3>
+                    <p>Real-time dashboards and predictive insights to drive data-informed decisions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Bank-Level Security</h3>
+                    <p>AES-256 encryption, SOC2 Type II certified, GDPR and CCPA compliant.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📞</div>
+                    <h3>Premium Support</h3>
+                    <p>Dedicated account managers and 24/7 technical support for enterprise customers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Custom Solutions</h3>
+                    <p>Flexible APIs and SDKs for building tailored solutions meeting your unique needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Opportunity Section -->
+    <section class="section market">
+        <div class="container">
+            <h2 class="section-title">Market Opportunity</h2>
+            <p class="section-subtitle">A massive untapped market with exponential growth potential</p>
+            
+            <div class="market-grid">
+                <div class="market-item">
+                    <div class="market-value">$250B</div>
+                    <div class="market-label">Total Addressable Market (TAM)</div>
+                    <p>The global software market continues to expand at 12% CAGR, with our segment growing at 35% annually.</p>
+                </div>
+                <div class="market-item">
+                    <div class="market-value">$75B</div>
+                    <div class="market-label">Serviceable Addressable Market (SAM)</div>
+                    <p>Our target vertical represents a $75 billion opportunity across North America and Europe.</p>
+                </div>
+                <div class="market-item">
+                    <div class="market-value">$5B</div>
+                    <div class="market-label">Serviceable Obtainable Market (SOM)</div>
+                    <p>Conservative 5-year projection of 6-7% market share captures significant value.</p>
+                </div>
+                <div class="market-item">
+                    <div class="market-value">45%</div>
+                    <div class="market-label">Market Growth Rate</div>
+                    <p>Our segment is experiencing explosive growth, driven by digital transformation initiatives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Advantage Section -->
+    <section class="section advantage">
+        <div class="container">
+            <h2 class="section-title">Why VentureX Wins</h2>
+            <p class="section-subtitle">Distinctive competitive advantages that make us the clear market leader</p>
+            
+            <div class="advantage-grid">
+                <div class="advantage-card">
+                    <div class="advantage-num">1</div>
+                    <h3>Proprietary Technology</h3>
+                    <p>8 years of R&D and 15+ patents in machine learning and distributed systems.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-num">2</div>
+                    <h3>World-Class Team</h3>
+                    <p>Founders from Google, Apple, and Microsoft with proven track record of exits.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-num">3</div>
+                    <h3>Customer-Centric Design</h3>
+                    <p>User-first philosophy resulting in 95% customer satisfaction and 40% NPS.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-num">4</div>
+                    <h3>Strong Unit Economics</h3>
+                    <p>CAC payback in 8 months with LTV:CAC ratio of 5:1 and 120% net revenue retention.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-num">5</div>
+                    <h3>Strategic Partnerships</h3>
+                    <p>Partnerships with industry leaders including AWS, Salesforce, and Google Cloud.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-num">6</div>
+                    <h3>Market First-Mover</h3>
+                    <p>3 years ahead of competitors with established customer base and brand recognition.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Screenshots Section -->
+    <section class="section product">
+        <div class="container">
+            <h2 class="section-title">Product & Demo</h2>
+            <p class="section-subtitle">Intuitive interface designed for power users and easy adoption</p>
+            
+            <div class="product-showcase">
+                <div class="product-image">
+                    [Dashboard Preview]
+                </div>
+                <div class="product-image">
+                    [Analytics View]
+                </div>
+                <div class="product-image">
+                    [Integration Hub]
+                </div>
+                <div class="product-image">
+                    [Admin Panel]
+                </div>
+                <div class="product-image">
+                    [Mobile App]
+                </div>
+                <div class="product-image">
+                    [API Documentation]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section team" id="team">
+        <div class="container">
+            <h2 class="section-title">Leadership Team</h2>
+            <p class="section-subtitle">Experienced founders and executives building the future</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-avatar">👨‍💼</div>
+                    <h3>Alex Johnson</h3>
+                    <div class="team-role">CEO & Co-Founder</div>
+                    <p class="team-bio">Former VP of Engineering at Google. 15+ years in distributed systems, 2 successful exits.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">👩‍💼</div>
+                    <h3>Sarah Chen</h3>
+                    <div class="team-role">CTO & Co-Founder</div>
+                    <p class="team-bio">Ex-Apple principal architect. Expert in ML and cloud infrastructure with 12 patents.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">👨‍💻</div>
+                    <h3>David Martinez</h3>
+                    <div class="team-role">VP of Product</div>
+                    <p class="team-bio">Former Uber product lead. Built products used by 100M+ users globally.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">👩‍💻</div>
+                    <h3>Emma Williams</h3>
+                    <div class="team-role">VP of Sales</div>
+                    <p class="team-bio">Sales veteran with $500M+ in pipeline experience across SaaS companies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investor CTA Section -->
+    <section class="section investor-cta">
+        <div class="container">
+            <h2>Ready to Invest in the Future?</h2>
+            <p>We're raising Series B funding to scale globally. Limited slots available for strategic investors.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary">Request Pitch Deck</button>
+                <button class="btn btn-secondary">Schedule Meeting</button>
+                <button class="btn btn-secondary">Download Deck</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#docs">Documentation</a></li>
+                        <li><a href="#roadmap">Roadmap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#press">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#community">Community</a></li>
+                        <li><a href="#support">Support</a></li>
+                        <li><a href="#status">Status Page</a></li>
+                        <li><a href="#webinars">Webinars</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Get In Touch</h3>
+                    <div class="footer-contact">
+                        <p>📧 <a href="mailto:investors@venturex.io">investors@venturex.io</a></p>
+                        <p>📞 (415) 555-0101</p>
+                        <p>🌐 San Francisco, CA</p>
+                        <div class="footer-social" style="margin-top: 16px;">
+                            <a href="#twitter" class="social-link">𝕏</a>
+                            <a href="#linkedin" class="social-link">in</a>
+                            <a href="#github" class="social-link">⚙️</a>
+                            <a href="#discord" class="social-link">💬</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">© 2026 VentureX Inc. All rights reserved.</div>
+                <ul class="footer-links">
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                    <li><a href="#cookies">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section:not(.hero)').forEach((section) => {
+            section.style.opacity = '0';
+            observer.observe(section);
+        });
+
+        // Responsive navigation menu toggle
+        function handleResponsiveNav() {
+            const navLinks = document.querySelector('.nav-links');
+            if (window.innerWidth <= 768 && navLinks) {
+                navLinks.style.display = 'none';
+            } else if (navLinks) {
+                navLinks.style.display = 'flex';
+            }
+        }
+
+        window.addEventListener('resize', handleResponsiveNav);
+        handleResponsiveNav();
+
+        // Button click handlers (can be connected to actual forms/analytics)
+        document.querySelectorAll('button').forEach((button) => {
+            button.addEventListener('click', function() {
+                console.log(`Button clicked: ${this.textContent.trim()}`);
+                // Add your tracking or form submission logic here
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.borderBottomColor = 'rgba(45, 53, 97, 0.5)';
+                nav.style.background = 'rgba(10, 14, 39, 0.98)';
+            } else {
+                nav.style.borderBottomColor = '#2d3561';
+                nav.style.background = 'rgba(10, 14, 39, 0.95)';
+            }
+        });
+
+        // Performance optimization: Lazy load effects
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add slight animation stagger to feature cards
+            const cards = document.querySelectorAll('.feature-card, .advantage-card, .team-member');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.animation = `fadeInUp 0.8s ease ${index * 0.1}s forwards`;
+            });
+        });
+    </script>
+</body>
+</html>
